@@ -8,14 +8,13 @@ public class Operator {
     private JmInteger b;
     private String operation;
 
-    private final String regex = "^([IVX]*|[0-9]{1,})\\s*([\\*\\+-\\/]{1})\\s*([IVX]*|[0-9]{1,})$";
-
     public Operator(String userExpression) {
+        String regex = "^([IVX]*|[0-9]{1,})\\s*([\\*\\+-\\/]{1})\\s*([IVX]*|[0-9]{1,})$";
         Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         setupCalculator(pattern.matcher(userExpression));
     }
 
-    private void setupCalculator(Matcher matcher) {
+    private void setupCalculator(Matcher matcher) { // TODO продумать наименование метода
         while(matcher.find()) {
             /*System.out.println("found: " + matcher.group(1));
             System.out.println("found: " + matcher.group(2));
@@ -25,12 +24,25 @@ public class Operator {
             operation = matcher.group(2);
         }
 
-        // Проверка a и b на [1... 10]
+        // TODO Проверка a и b на [1... 10]
+        if (a.getValue() < 1 || a.getValue() > 10 || b.getValue() < 1 || b.getValue() > 10) {
+            System.out.println("Калькулятор оперирует только значениями в пределах значений [1...10]");
+            // TODO выбросить исключение вроде OutOfRange
+        }
 
         if (a != null) {
             Calculator calc = new Calculator(a.getValue(), b.getValue(), operation);
             JmInteger result = new JmInteger(calc.calculate());
-            System.out.println("Calculator: " + result.getValue() + ": " + result.toRoman());
-        }
+
+            if (a.isRoman() && b.isRoman()) {
+                // TODO Проверка на отрицательное или нуль при римском выводе
+                System.out.println("Roman: " + result.toRoman());
+            } else if (!a.isRoman() && !b.isRoman()) {
+                System.out.println("Arabic: " + result.getValue());
+            } else {
+                System.out.println("Calculator: " + result.getValue() + ": " + result.toRoman());
+                // TODO Выбрасывать исключение
+            }
+        } // TODO else
     }
 }

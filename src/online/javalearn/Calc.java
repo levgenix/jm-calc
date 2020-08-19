@@ -18,7 +18,7 @@ public class Calc {
         try {
             Operator operator = new Operator(expression);
         } catch (Exception e) {
-            System.out.println("Exception from Oprator");
+            System.out.println("Exception from Operator");
         }
     }
 }

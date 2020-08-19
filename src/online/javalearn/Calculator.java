@@ -42,6 +42,7 @@ public class Calculator {
                 case DIVIDE:
                     return a / b;
                 default:
+                    // TODO System.out.println("sdsdasdsada");
                     throw new InputMismatchException("Калькулятор выполняет только операции сложения, вычитания, умножения и деления!");
             }
         } catch (ArithmeticException ex) {
