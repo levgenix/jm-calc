@@ -10,9 +10,17 @@ public class Calculator {
     private final int b;
     private Operation operation;
 
-    public Calculator(int a, int b, String op) {
+    public Calculator(int a, int b, String op) throws IndexOutOfBoundsException, InputMismatchException, ArithmeticException {
         this.a = a;
         this.b = b;
+
+        if (b == 0) {
+            throw new ArithmeticException("Вероятно, что деление на ноль!");
+        }
+
+        if (a < 1 || a > 10 || b < 1 || b > 10) {
+            throw new IndexOutOfBoundsException("Калькулятор оперирует только значениями в пределах значений [1...10]");
+        }
 
         switch (op) {
             case "+":
@@ -27,10 +35,12 @@ public class Calculator {
             case "/":
                 operation = DIVIDE;
                 break;
+            default:
+                throw new InputMismatchException("Калькулятор выполняет только операции сложения, вычитания, умножения и деления!");
         }
     }
 
-    public int calculate() throws InputMismatchException, ArithmeticException {
+    public int calculate() throws ArithmeticException {
         try {
             switch (operation) {
                 case ADD:
@@ -41,13 +51,11 @@ public class Calculator {
                     return a * b;
                 case DIVIDE:
                     return a / b;
-                default:
-                    // TODO System.out.println("sdsdasdsada");
-                    throw new InputMismatchException("Калькулятор выполняет только операции сложения, вычитания, умножения и деления!");
             }
-        } catch (ArithmeticException ex) {
-            System.out.println("ArithmeticException");
+        } catch (ArithmeticException e) {
+            throw e;
         }
+
         return 0;
     }
 }
