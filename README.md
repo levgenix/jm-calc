@@ -22,20 +22,13 @@ Java Mentor тестовое задание
 
 Пример работы программы:
 
-Input:
+Input: 1 + 2
 
-1 + 2
+Output: 3
 
-Output:
+Input: VI / III
 
-3
-Input:
-
-VI / III
-
-Output:
-
-II
+Output: II
 
 
 Принципы оценки работы:
