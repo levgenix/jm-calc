@@ -9,11 +9,18 @@ public class Operator {
     private JmInteger b;
     private String operation;
 
+    /**
+     * Регулярное выражение, соответствующее пользовательскому вводу
+     */
     private static final String regex = "^([IVX]*|[0-9]+)\\s*([\\*\\+-\\/]?)\\s*([IVX]*|[0-9]+)$";
     //private static String regex = "^([IVX]*|[0-9]{1,})\\s*(.{1})\\s*([IVX]*|[0-9]{1,})$";
 
     Pattern pattern;
 
+    /**
+     * Конструктор
+     * @param userExpression Пользовательский ввод
+     */
     public Operator(String userExpression) {
         pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         try {
@@ -23,7 +30,14 @@ public class Operator {
         }
     }
 
-    private void doCalc(String expression) throws NumberFormatException {
+    /**
+     * Парсит выражение, запускает калькулятор.
+     * Выводит результат оперции.
+     * @param expression Пользовательское выражение
+     * @throws NumberFormatException Исключение, связанное с неверным expression
+     * @throws ArithmeticException Исключение, связанное с арифметическими ошибками
+     */
+    private void doCalc(String expression) throws NumberFormatException, ArithmeticException {
 
         Matcher matcher = pattern.matcher(expression);
 

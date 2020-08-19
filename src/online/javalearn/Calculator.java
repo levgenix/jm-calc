@@ -4,12 +4,24 @@ import java.util.InputMismatchException;
 
 import static online.javalearn.Operation.*;
 
+/**
+ * Калькулятор
+ */
 public class Calculator {
 
     private final int a;
     private final int b;
     private Operation operation;
 
+    /**
+     * Конструктор. Устанавливает значения
+     * @param a Первое число
+     * @param b Второе число
+     * @param op Операция над числами
+     * @throws IndexOutOfBoundsException
+     * @throws InputMismatchException
+     * @throws ArithmeticException
+     */
     public Calculator(int a, int b, String op) throws IndexOutOfBoundsException, InputMismatchException, ArithmeticException {
         this.a = a;
         this.b = b;
@@ -40,6 +52,11 @@ public class Calculator {
         }
     }
 
+    /**
+     * Расчитывает значение от операции над числами
+     * @return Результат операции
+     * @throws ArithmeticException
+     */
     public int calculate() throws ArithmeticException {
         try {
             switch (operation) {

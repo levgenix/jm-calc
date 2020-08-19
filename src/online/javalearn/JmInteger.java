@@ -4,11 +4,24 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Структура целочисленного значения с возможностью конвертации в римское представление и обратно
+ */
 public class JmInteger {
 
+    /**
+     * Представление в 10й системе счисления
+     */
     private int value;
+    /**
+     * Был ли ввод пользователем в римской системе
+     */
     private boolean isRoman = false;
 
+    /**
+     * Конструктор для проверки на 10е или римское
+     * @param s
+     */
     public JmInteger(String s) {
         try {
             value = Integer.parseInt(s);
@@ -18,10 +31,20 @@ public class JmInteger {
         }
     }
 
+    /**
+     * Конструктор для 10й системы
+     * @param i
+     */
     public JmInteger(int i) {
         value = i;
     }
 
+    /**
+     * Конвертация римского числа в 10е
+     * Устанавливает флаг isRoman в true
+     * @param s
+     * @return 10е число
+     */
     private int convertToInt(String s) {
         String[] romanString = s.split("");
 
@@ -59,6 +82,11 @@ public class JmInteger {
         return num;
     }
 
+    /**
+     * Переводит 10е число в римское представление
+     * @param num
+     * @return Римский формат
+     */
     private String intToRoman(int num) {
         StringBuilder sb = new StringBuilder();
         int times = 0;

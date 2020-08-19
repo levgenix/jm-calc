@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Стартовая точка программы
+ */
 public class Calc {
 
     public static void main(String[] args) throws IOException {
@@ -21,7 +24,6 @@ public class Calc {
             Operator operator = new Operator(expression);
         } catch (NullPointerException e) {
             System.out.println(e);
-            System.out.println("Exception from Operator");
         }
     }
 }
