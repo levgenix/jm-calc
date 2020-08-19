@@ -9,7 +9,7 @@ public class Operator {
     private JmInteger b;
     private String operation;
 
-    private static String regex = "^([IVX]*|[0-9]{1,})\\s*([\\*\\+-\\/]{1})\\s*([IVX]*|[0-9]{1,})$";
+    private static final String regex = "^([IVX]*|[0-9]+)\\s*([\\*\\+-\\/]?)\\s*([IVX]*|[0-9]+)$";
     //private static String regex = "^([IVX]*|[0-9]{1,})\\s*(.{1})\\s*([IVX]*|[0-9]{1,})$";
 
     Pattern pattern;
